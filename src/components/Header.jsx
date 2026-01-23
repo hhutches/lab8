@@ -2,7 +2,7 @@ export default function Header() {
   const siteTitle = "Henry Hutcheson";
 
   const links = [
-    { label: "HOMEPAGE ✅", href: "#home" },
+    { label: "Homepage", href: "#home" },
     { label: "Intro", href: "#intro" },
     { label: "Cards", href: "#cards" },
   ];

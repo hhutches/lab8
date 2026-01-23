@@ -1,8 +1,12 @@
+// App.jsx
 import { useState } from "react";
 
 import Header from "./components/Header.jsx";
 import Homepage from "./components/Homepage.jsx";
 import Introduction from "./components/Introduction.jsx";
+import Card from "./components/Card.jsx";
+import Section from "./components/Section.jsx";
+
 import "./App.css";
 
 import henryPhoto from "./assets/henry.jpeg";
@@ -30,10 +34,8 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
 
   function handleCardClick(id) {
-    // start spin
     setSpinningId(id);
 
-    // after spin ends, apply selection outline
     window.setTimeout(() => {
       setSpinningId(null);
       setSelectedId(id);
@@ -48,38 +50,27 @@ export default function App() {
         <Homepage />
         <Introduction />
 
-        <section id="cards" className="cardsSection">
-          <h2>Cards</h2>
-
+        <Section id="cards" title="Cards">
           <div className="cardGrid">
             {cards.map((card) => {
               const isSelected = selectedId === card.id;
               const isSpinning = spinningId === card.id;
 
               return (
-                <article
+                <Card
                   key={card.id}
-                  className={[
-                    "card",
-                    card.featured ? "card--featured" : "",
-                    isSpinning ? "card--spin" : "",
-                    isSelected ? "card--selected" : "",
-                  ].join(" ")}
+                  title={card.title}
+                  description={card.description}
+                  image={card.image}
+                  featured={card.featured}
+                  isSelected={isSelected}
+                  isSpinning={isSpinning}
                   onClick={() => handleCardClick(card.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") handleCardClick(card.id);
-                  }}
-                >
-                  <img className="cardImg" src={card.image} alt={card.title} />
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                </article>
+                />
               );
             })}
           </div>
-        </section>
+        </Section>
       </main>
     </div>
   );
