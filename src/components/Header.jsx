@@ -1,28 +1,25 @@
-export default function Header() {
-  const siteTitle = "Henry Hutcheson";
-
-  const links = [
-    { label: "Homepage", href: "#home" },
-    { label: "Intro", href: "#intro" },
-    { label: "Cards", href: "#cards" },
-  ];
-
-  const isSticky = true;
-  const headerClass = `header ${isSticky ? "header--sticky" : ""}`;
-
+export default function Header({ mode }) {
   return (
-    <header className={headerClass}>
-      <div className="headerRow">
-        <div className="brand">{siteTitle}</div>
+    <header
+      className={`siteHeader ${
+        mode === "dark" ? "siteHeader--dark" : "siteHeader--light"
+      }`}
+    >
+      <nav className="siteNav">
+        <h1 className="siteTitle">Henry Hutcheson</h1>
 
-        <nav className="nav">
-          {links.map((link) => (
-            <a key={link.href} href={link.href} className="navLink">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+        <ul className="siteLinks">
+          <li>
+            <a href="#home">Homepage</a>
+          </li>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#cards">Cards</a>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }

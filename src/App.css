@@ -338,3 +338,710 @@ html {
   outline: 3px solid #000;
   outline-offset: 3px;
 }
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.controls input,
+.controls select {
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.controls button {
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.page--light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.page--dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* layout */
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.modeBar {
+  margin: 1rem 0 1.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modeInfo {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.modeLabel {
+  margin: 0;
+}
+
+.modeHint {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.modeButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: end;
+  margin-top: 0.75rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cardGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.selectedPanel {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid currentColor;
+}
+
+.selectedTitle {
+  margin: 0 0 0.25rem;
+}
+
+.selectedDesc {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.selectedEmpty {
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+.nightText {
+  margin-top: 0.75rem;
+  opacity: 0.9;
+}
+
+/* buttons/inputs */
+button {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input,
+select {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  opacity: 0.7;
+  color: inherit;
+}
+
+/* fixed top-left segmented toggle */
+.modeToggleWrap {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+
+  display: inline-flex;
+  border-radius: 999px;
+  overflow: hidden;
+
+  border: 2px solid #000;
+}
+
+/* base half */
+.modeHalf {
+  padding: 10px 14px;
+  min-width: 110px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ALWAYS these colors, per your spec */
+.modeHalf--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modeHalf--dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* show which side is selected */
+.modeHalf--active {
+  outline: 3px solid currentColor;
+  outline-offset: -3px;
+}
+
+/* optional: remove default button focus weirdness but keep accessible focus */
+.modeHalf:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: -3px;
+}
+
+/* keep your theme classes (page background/text) */
+.page--light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.page--dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* page theme */
+.page--light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.page--dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* layout */
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: end;
+  margin-top: 0.75rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cardGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.selectedPanel {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid currentColor;
+}
+
+.selectedEmpty {
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* basic form styling */
+button {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+
+input,
+select {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.6rem;
+}
+
+/* ✅ SMALL hard-corner mode toggle (top-left) */
+.modeToggleWrap {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+
+  display: inline-flex;
+  border-radius: 0;       /* hard corners */
+  overflow: hidden;
+  border: 1px solid #000; /* crisp outline */
+}
+
+.modeHalf {
+  padding: 3px 8px;       /* smaller */
+  min-width: 58px;        /* smaller */
+  font-weight: 700;
+  font-size: 0.8rem;      /* smaller */
+  border: 0;
+  line-height: 1.2;
+}
+
+/* fixed colors per your instructions */
+.modeHalf--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modeHalf--dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* optional focus (accessible) */
+.modeHalf:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* ✅ SMALL hard-corner mode toggle (top-left) */
+.modeToggleWrap {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+
+  display: inline-flex;
+
+  border-radius: 0;       /* hard corners */
+  overflow: hidden;
+  border: 1px solid #000; /* crisp outline */
+}
+
+/* each half (no rounding) */
+.modeHalf {
+  padding: 3px 8px;
+  min-width: 56px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 0;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+/* divider line exactly down the middle */
+.modeHalf + .modeHalf {
+  border-left: 1px solid #000;
+}
+
+/* fixed colors per your spec */
+.modeHalf--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modeHalf--dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* active state WITHOUT rounded/inner-box look */
+.modeHalf--active {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* keep focus accessible but NOT rounded */
+.modeHalf:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* Page theme */
+.page--light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.page--dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* Layout */
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ---------- Navbar (themes + blur fix) ---------- */
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* light navbar */
+.siteHeader--light {
+  background: #ffffff;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* dark navbar */
+.siteHeader--dark {
+  background: #0f172a;
+  color: #e5e7eb;
+  border-bottom: 1px solid #334155;
+}
+
+/* basic nav layout */
+.siteNav {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.siteTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+/* links */
+.siteLinks {
+  list-style: none;
+  display: flex;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+.siteLinks a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.siteLinks a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ✅ blur killers for dark mode header text */
+.siteHeader--dark,
+.siteHeader--dark * {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* prevent transform-based blur on the title */
+.siteHeader--dark .siteTitle {
+  transform: none !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Controls / Cards section ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: end;
+  margin-top: 0.75rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cardGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.selectedPanel {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid currentColor;
+}
+
+.selectedEmpty {
+  margin-top: 1rem;
+  opacity: 0.85;
+}
+
+/* Basic form styling */
+button {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+
+input,
+select {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.6rem;
+}
+
+/* ---------- Small hard-corner theme toggle (top-left) ---------- */
+.modeToggleWrap {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+
+  display: inline-flex;
+  border-radius: 0; /* hard corners */
+  overflow: hidden;
+
+  border: 1px solid #000; /* crisp outline */
+}
+
+/* small halves */
+.modeHalf {
+  padding: 3px 8px;
+  min-width: 56px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 0;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+/* exact split down the middle */
+.modeHalf + .modeHalf {
+  border-left: 1px solid #000;
+}
+
+/* fixed colors per your spec */
+.modeHalf--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modeHalf--dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* subtle active indicator (no rounded inner shapes) */
+.modeHalf--active {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.modeHalf:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.siteHeader--light {
+  background: #ffffff;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.siteHeader--dark {
+  background: #0f172a;
+  color: #e5e7eb;
+  border-bottom: 1px solid #334155;
+}
+
+/* layout */
+.siteNav {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.siteTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.siteLinks {
+  list-style: none;
+  display: flex;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+.siteLinks a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.siteLinks a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Kills blur-causing effects in dark mode */
+.siteHeader--dark,
+.siteHeader--dark * {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.siteHeader--dark .siteTitle {
+  transform: none !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+.modeToggleWrap {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+
+  display: inline-flex;
+  border-radius: 0 !important; /* force square */
+  overflow: hidden;
+
+  border: 1px solid #000;
+}
+
+/* force square on the toggle buttons (beats global button styles) */
+.modeToggleWrap .modeHalf {
+  padding: 3px 8px;
+  min-width: 56px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 0;
+  line-height: 1.2;
+  cursor: pointer;
+
+  border-radius: 0 !important; /* force square */
+}
+
+/* divider exactly in the middle */
+.modeToggleWrap .modeHalf + .modeHalf {
+  border-left: 1px solid #000;
+}
+
+/* fixed colors */
+.modeHalf--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modeHalf--dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* active indicator (still square) */
+.modeHalf--active {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* focus outline (square) */
+.modeToggleWrap .modeHalf:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* WELCOME VIDEO BOX */
+.modeVideo {
+  width: 100%;
+  max-width: 980px;
+  height: 240px;              /* 👈 fixed welcome box height */
+  margin: 0.75rem auto 1rem;
+
+  overflow: hidden;           /* 👈 crops the video */
+  border: 1px solid currentColor;
+  position: relative;
+}
+
+/* VIDEO FILLS + CROPS */
+.modeVideo video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;          /* 👈 THIS is the magic */
+  object-position: center;    /* center crop */
+  display: block;
+}

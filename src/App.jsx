@@ -1,11 +1,11 @@
-// App.jsx
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import Header from "./components/Header.jsx";
 import Homepage from "./components/Homepage.jsx";
 import Introduction from "./components/Introduction.jsx";
 import Card from "./components/Card.jsx";
 import Section from "./components/Section.jsx";
+import ModeToggle from "./components/ModeToggle.jsx";
 
 import "./App.css";
 
@@ -19,56 +19,106 @@ export default function App() {
       title: "Me",
       description: "A photo of me for my Lab 3 About Me site.",
       image: henryPhoto,
-      featured: true,
     },
     {
       id: "dogs",
       title: "My Dogs",
       description: "A photo of my dogs.",
       image: dogsPhoto,
-      featured: false,
     },
   ];
+
+  // mode state
+  const [mode, setMode] = useState("light");
 
   const [spinningId, setSpinningId] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
 
+  const [filterTitle, setFilterTitle] = useState("All");
+  const [searchText, setSearchText] = useState("");
+
   function handleCardClick(id) {
     setSpinningId(id);
-
-    window.setTimeout(() => {
+    setTimeout(() => {
       setSpinningId(null);
       setSelectedId(id);
-    }, 600); // must match CSS animation duration
+    }, 600);
   }
 
+  function handleReset() {
+    setFilterTitle("All");
+    setSearchText("");
+    setSelectedId(null);
+  }
+
+  const titleOptions = useMemo(() => {
+    const uniqueTitles = Array.from(new Set(cards.map((c) => c.title)));
+    return ["All", ...uniqueTitles.sort()];
+  }, [cards]);
+
+  const visibleCards = useMemo(() => {
+    const q = searchText.trim().toLowerCase();
+
+    return cards.filter((card) => {
+      const matchesFilter =
+        filterTitle === "All" || card.title === filterTitle;
+
+      const matchesSearch =
+        !q ||
+        card.title.toLowerCase().includes(q) ||
+        card.description.toLowerCase().includes(q);
+
+      return matchesFilter && matchesSearch;
+    });
+  }, [cards, filterTitle, searchText]);
+
   return (
-    <div className="page">
-      <Header />
+    <div className={`page ${mode === "dark" ? "page--dark" : "page--light"}`}>
+      <ModeToggle mode={mode} setMode={setMode} />
+      <Header mode={mode} />
 
       <main className="content">
-        <Homepage />
+        {/* ✅ THIS is the important line */}
+        <Homepage mode={mode} />
+
         <Introduction />
 
         <Section id="cards" title="Cards">
-          <div className="cardGrid">
-            {cards.map((card) => {
-              const isSelected = selectedId === card.id;
-              const isSpinning = spinningId === card.id;
+          <div className="controls">
+            <label className="control">
+              Filter
+              <select
+                value={filterTitle}
+                onChange={(e) => setFilterTitle(e.target.value)}
+              >
+                {titleOptions.map((opt) => (
+                  <option key={opt}>{opt}</option>
+                ))}
+              </select>
+            </label>
 
-              return (
-                <Card
-                  key={card.id}
-                  title={card.title}
-                  description={card.description}
-                  image={card.image}
-                  featured={card.featured}
-                  isSelected={isSelected}
-                  isSpinning={isSpinning}
-                  onClick={() => handleCardClick(card.id)}
-                />
-              );
-            })}
+            <label className="control">
+              Search
+              <input
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </label>
+
+            <button onClick={handleReset}>Reset</button>
+          </div>
+
+          <div className="cardGrid">
+            {visibleCards.map((card) => (
+              <Card
+                key={card.id}
+                {...card}
+                isSelected={selectedId === card.id}
+                isSpinning={spinningId === card.id}
+                onClick={() => handleCardClick(card.id)}
+                mode={mode}
+              />
+            ))}
           </div>
         </Section>
       </main>
