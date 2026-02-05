@@ -3,5 +3,13 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/profile-app/",
+
+  // GitHub Pages repo name
+  base: "/lab7/",
+
+  // Output folder GitHub Pages can serve
+  build: {
+    outDir: "docs",
+    emptyOutDir: true,
+  },
 });
