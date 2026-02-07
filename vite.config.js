@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
 
   // GitHub Pages repo name
-  base: "/lab7/",
+  base: "/lab8/",
 
   // Output folder GitHub Pages can serve
   build: {

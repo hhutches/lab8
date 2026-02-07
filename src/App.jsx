@@ -7,6 +7,7 @@ import Card from "./components/Card.jsx";
 import Section from "./components/Section.jsx";
 import ModeToggle from "./components/ModeToggle.jsx";
 import AddProfileForm from "./components/AddProfileForm.jsx";
+import ApiProfilesSection from "./components/ApiProfilesSection.jsx";
 
 import "./App.css";
 
@@ -14,7 +15,10 @@ import henryPhoto from "./assets/henry.jpeg";
 import dogsPhoto from "./assets/dogs.jpeg";
 
 export default function App() {
-  // ✅ Cards are now STATE so new profiles can be added into the same grid
+  // ✅ mode FIRST
+  const [mode, setMode] = useState("light");
+
+  // ✅ cards state (so Add Profile can add new cards)
   const [cards, setCards] = useState([
     {
       id: "henry",
@@ -29,9 +33,6 @@ export default function App() {
       image: dogsPhoto,
     },
   ]);
-
-  // mode state
-  const [mode, setMode] = useState("light");
 
   const [spinningId, setSpinningId] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
@@ -53,11 +54,9 @@ export default function App() {
     setSelectedId(null);
   }
 
-  // ✅ called when form submits successfully
+  // ✅ called when AddProfileForm submits successfully
   function handleAddCard(newCard) {
     setCards((prev) => [newCard, ...prev]);
-
-    // optional: clear selection so the user sees the new card unselected
     setSelectedId(null);
   }
 
@@ -90,11 +89,17 @@ export default function App() {
         <Homepage mode={mode} />
         <Introduction />
 
-        {/* ✅ Add Profile form that adds directly into the cards list */}
+        {/* ✅ Lab 8: fetched data section */}
+        <Section id="api-profiles" title="API Profiles (Lab 8)">
+          <ApiProfilesSection mode={mode} />
+        </Section>
+
+        {/* ✅ Lab 7: Add Profile adds into the SAME cards list */}
         <Section id="add-profile" title="Add Profile">
           <AddProfileForm onAddCard={handleAddCard} />
         </Section>
 
+        {/* Existing Cards */}
         <Section id="cards" title="Cards">
           <div className="controls">
             <label className="control">
@@ -104,7 +109,9 @@ export default function App() {
                 onChange={(e) => setFilterTitle(e.target.value)}
               >
                 {titleOptions.map((opt) => (
-                  <option key={opt}>{opt}</option>
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
                 ))}
               </select>
             </label>
